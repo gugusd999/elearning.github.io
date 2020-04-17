@@ -9,31 +9,66 @@ define(['jquery', 'helper', 'frb', '@firebase/app', '@firebase/database'], funct
       let data = await firebase.database().ref('guru/kelas/'+dataLogin.username).once('value').then((value) => {
         if (value.val() != null) {
           let html = ``;
-          value.val().map((item, i) => {
-            let {jenjang, kelas} = item;
-            return  `
 
-            <a href="#/ruang-guru/kelas/${jenjang}-${kelas}" class="col-sm-6  mt-3">
-              <div class="card">
-                <div class="card-body text-center" id="crud">
-                  <div class="row">
-                    <div class="col-sm-4">
-                      <img class="img-fluid img-menu" src="./asset/icon-siswa.png" alt="">
-                    </div>
-                    <div class="col-sm-8 text-left">
-                      <span style="font-size: 20px; font-weight: 700; color: black;">${jenjang}/ ${kelas}</span>
-                      <p class="text-dark">Yuk buat kelas untuk siswa</p>
+          let data = value.val();
+
+          if (Array.isArray(data)) {
+            data.map((item, i) => {
+              let {jenjang, kelas} = item;
+              return  `
+
+              <a href="#/ruang-guru/kelas/${jenjang}-${kelas}" class="col-sm-6  mt-3">
+                <div class="card">
+                  <div class="card-body text-center" id="crud">
+                    <div class="row">
+                      <div class="col-sm-4">
+                        <img class="img-fluid img-menu" src="./asset/icon-siswa.png" alt="">
+                      </div>
+                      <div class="col-sm-8 text-left">
+                        <span style="font-size: 20px; font-weight: 700; color: black;">${jenjang}/ ${kelas}</span>
+                        <p class="text-dark">Yuk buat kelas untuk siswa</p>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            </a>
-            `;
+              </a>
+              `;
 
-          }).forEach((item, i) => {
-            html += item;
-          });
-          $('body #syfaul-container').html(html);
+            }).forEach((item, i) => {
+              html += item;
+            });
+            $('body #syfaul-container').html(html);
+          }else{
+            let keys = Object.keys(data);
+
+            keys.map((item) => {
+            let {jenjang, kelas} = data[item];
+              return  `
+
+              <a href="#/ruang-guru/kelas/${jenjang}-${kelas}" class="col-sm-6  mt-3">
+                <div class="card">
+                  <div class="card-body text-center" id="crud">
+                    <div class="row">
+                      <div class="col-sm-4">
+                        <img class="img-fluid img-menu" src="./asset/icon-siswa.png" alt="">
+                      </div>
+                      <div class="col-sm-8 text-left">
+                        <span style="font-size: 20px; font-weight: 700; color: black;">${jenjang}/ ${kelas}</span>
+                        <p class="text-dark">Yuk buat kelas untuk siswa</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </a>
+              `;
+
+            }).forEach((item, i) => {
+              html += item;
+            });
+            $('body #syfaul-container').html(html);      
+
+          }
+
         }
       });
 
