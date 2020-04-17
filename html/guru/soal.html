@@ -1,0 +1,127 @@
+<div class="container">
+  <div class="row padding-5">
+    <div class="col-sm-6">
+      <h4 class="card-title">G - Learn</h4>
+    </div>
+    <div class="col-sm-6 text-right">
+      <ul class="navigation">
+        <li>
+          <a href="#/">Dashboard</a>
+        </li>
+        <li>
+          <a href="#/">Profile</a>
+        </li>
+        <li>
+          <a guru-log-out href="#/">Log Out</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="row mt-3">
+    <div class="col-sm-6">
+      <h1 id="kelas-title"></h1>
+      <p>Selamat datang di halaman pembuatan soal <span id="kelas-title" style="font-style: italic; font-weight: 600;"></span>, ayuk buat soalnya dengan baik dan benar ! </p>
+    </div>
+    <div class="col-sm-6 text-right">
+      <img width="150px" src="asset/icon-guru.svg" alt="">
+    </div>
+</div>
+
+<div class="container-fluid mt-3">
+  <div class="row">
+    <div class="col-sm-12">
+        <a href="#/ruang-guru/ruang-kelas" class="btn btn-default">Kembali</a>
+       <button modal-open modal-target="id01" table-name="guru/latihan-soal/" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">
+        Buat Soal Baru
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid mt-5" style="min-height: 300px;">
+	<div class="text-center">
+		<h1 id="kelas-title"></h1>
+	</div>
+	<div class="row" id="syfaul-container">
+
+	</div>
+</div>
+</div>
+<section class="footer mt-5 text-dark">
+  <div class="container">
+    <div class="row">
+      &copy; Copyright by Gugus Darmayanto
+    </div>
+    <div class="col-sm-6">
+
+    </div>
+    <div class="col-sm-6">
+
+    </div>
+  </div>
+</section>
+
+<div id="id01" class="w3-modal">
+    <div class="w3-modal-content w3-card-4">
+      <header class="w3-container w3-blue">
+        <span modal-close
+        class="w3-button w3-display-topright">&times;</span>
+        <h2>Tambah Kelas Baru</h2>
+      </header>
+      <div class="w3-container">
+      <h4>Buat Soal</h4>
+        <div class="form-group">
+          <label for="">No Soal</label>
+          <input type="number" pilihan-no data-table="guru/akun-guru/kelas" name="no" class="form-control"/>
+        </div>
+        <div class="form-group">
+          <label for="">Tuliskan Soal</label>
+          <textarea type="text" pilihan-soal data-table="guru/akun-guru/kelas" name="soal" class="form-control"></textarea>
+        </div>
+        <div>
+			<h4>Buat pilihan</h4>
+        </div>
+        <div class="form-group">
+          <label for="">Pilihan A</label>
+          <input type="text" pilihan-a data-table="guru/akun-guru/kelas" name="a" class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="">Pilihan B</label>
+          <input type="text" pilihan-b data-table="guru/akun-guru/kelas" name="b" class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="">Pilihan C</label>
+          <input type="text" pilihan-c data-table="guru/akun-guru/kelas" name="c" class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="">Pilihan D</label>
+          <input type="text" pilihan-d data-table="guru/akun-guru/kelas" name="d" class="form-control">
+        </div>
+      	<div>
+			<h4>Kunci Pilihan Yang Benar</h4>
+        </div>
+        <div class="form-group">
+          <label for="">kunci pilihan</label>
+          <select pilihan-kunci data-table="guru/akun-guru/kelas" name="kunci" class="form-control">
+      			<option value="">Pilih Jawaban Kunci</option>
+      			<option value="a">A</option>
+      			<option value="b">B</option>
+      			<option value="c">C</option>
+      			<option value="d">D</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="">Tuliskan Soal</label>
+          <textarea type="text" pilihan-alasan data-table="guru/akun-guru/kelas" name="alasan" class="form-control"></textarea>
+        </div>
+      </div>
+      <footer class="w3-container w3-blue">
+        <button data-simpan data-key="no" action-script="
+          $('body #id01').css('display', 'none');
+          soal_lib.menu();
+        " get-data="guru/akun-guru/kelas" type="button" >Simpan</button>
+      </footer>
+    </div>
+  </div>
+</div>

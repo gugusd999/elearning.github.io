@@ -1,5 +1,107 @@
-<html>
-  <body>
-    <h1>kkokok</h1>
-  </body>
-  </html>
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content= "width=device-width, initial-scale=1.0">
+		<title>glearn</title>
+		<link rel="stylesheet" href="./css/bootstrap.min.css">
+		<link rel="stylesheet" href="./css/dataTables.bootstrap4.min.css">
+		<link rel="stylesheet" href="./css/select2.css">
+		<link rel="stylesheet" href="./css/style.css">
+		<link rel="stylesheet" href="./icon/icon.css">
+		<link rel="stylesheet" href="./css/w3.css">
+		<!-- <link rel="stylesheet" href="./cssPrint/style.css"> -->
+		<style media="screen">
+			td, th{
+				wrap-content: nowrap;
+			}
+		</style>
+	</head>
+	<body class="bg-img-01">
+
+		<div id="main">
+
+		</div>
+
+		<script src="./require.js" charset="utf-8"></script>
+		<script src="./config.js" charset="utf-8"></script>
+		<script type="text/javascript">
+
+			require([
+				'sammy',
+				'page/dashboard',
+				'page/dashboardsiswa',
+				'page/guru/login',
+				'page/guru/daftar',
+				'page/siswa/daftarsiswa',
+				'page/ruangguru',
+				'page/guru/ruangkelas',
+				'page/guru/kelas',
+				'page/guru/soal',
+				'page/siswa/loginsiswa',
+				'page/siswa/pilihguru',
+				'page/siswa/kelasSiswa',
+				'page/siswa/kelasSiswaSoal',
+				'page/siswa/kelasSiswaSoalLatihan',
+				'action/click',
+				'action/firebaseAct'
+			], function(sammy, dashboard, dashboardsiswa, login, daftar, daftarsiswa, ruangguru, ruangkelas, kelas, soal, loginsiswa, pilihguru, kelasSiswa, kelasSiswaSoal, kelasSiswaSoalLatihan){
+					var app = sammy(function() {
+						// master data release
+						this.get('#/', function() {
+							dashboard.view();
+						});
+						this.get('#/guru/login', function() {
+							login.view();
+						});
+						this.get('#/siswa/login', function() {
+							loginsiswa.view();
+						});
+						this.get('#/guru/daftar', function() {
+							daftar.view();
+						});
+
+						this.get('#/siswa/daftar', function() {
+							daftarsiswa.view();
+						});
+						this.get('#/ruang-guru', function() {
+							ruangguru.view();
+						});
+						this.get('#/ruang-guru/ruang-kelas', function() {
+							ruangkelas.view();
+						});
+						this.get('#/ruang-guru/kelas/:kelas', function() {
+							let id = this.params['kelas'];
+                            kelas.view(id);
+						});
+						this.get('#/ruang-guru/soal-latihan/:kelas/:soal', function() {
+							let a = this.params['kelas'];
+							let b = this.params['soal'];
+                            soal.view(a, b);
+						});
+						this.get('#/siswa/pilih-guru/', function() {
+							pilihguru.view();
+						});
+						this.get('#/siswa-kelas/:guru', function() {
+							let a = this.params['guru'];
+							kelasSiswa.view(a);
+						});
+						this.get('#/siswa-kelas-soal/:kelas', function() {
+							let a = this.params['kelas'];
+							kelasSiswaSoal.view(a);
+						});
+						this.get('#/siswa-kelas-latihan-soal/:soal', function() {
+							let a = this.params['soal'];
+							kelasSiswaSoalLatihan.view(a);
+						});
+						this.get('#/ruangSiswa/', function() {
+							dashboardsiswa.view();
+						});
+					});
+					app.run("#/");
+			});
+
+		</script>
+
+	</body>
+</html>

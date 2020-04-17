@@ -1,0 +1,83 @@
+<div class="container">
+  <div class="row padding-5">
+    <div class="col-sm-6">
+      <h4 class="card-title">G - Learn</h4>
+    </div>
+    <div class="col-sm-6 text-right">
+      <ul class="navigation">
+        <li>
+          <a href="#/">Dashboard</a>
+        </li>
+        <li>
+          <a href="#/">Profile</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="row mt-3">
+    <div class="col-sm-12">
+      <h1>Pendaftaran Akun Murid Baru</h1>
+    </div>
+</div>
+
+<div class="container-fluid mt-3">
+  <div class="row d-flex justify-content-center">
+    <div class="col-sm-12 text-center">
+      <h3>Selamat Datang di Pendaftaran</h3>
+    </div>
+    <div class="col-xs-12 col-sm-10 col-md-8 col-lg-6  mt-3">
+      <div class="card">
+
+        <div class="card-body text-center" id="crud">
+          <img class="img-fluid img-menu" src="./asset/icon-guru.svg" alt="">
+          <p>Daftar disini dan beritahu kami tentang anda !</p>
+        </div>
+        <div class="container">
+          <form>
+            <div class="form-group">
+              <label for="">Nama Lengkap :</label>
+              <input type="text" required data-table="siswa/akun-siswa" name="nama" class="form-control" placeholder="exp: Gugus Darmayanto" value="">
+            </div>
+            <div class="form-group">
+              <label for="">No Telp :</label>
+              <input type="telp" required data-table="siswa/akun-siswa" name="telp" class="form-control" placeholder="exp: 085800******" value="">
+            </div>
+            <div class="form-group">
+              <label for="">Asal Sekolah :</label>
+              <input type="telp" required data-table="siswa/akun-siswa" name="telp" class="form-control" placeholder="exp: 085800******" value="">
+            </div>
+            <div class="form-group">
+              <label for="">Username :</label>
+              <input type="text" required data-table="siswa/akun-siswa" name="username" class="form-control" placeholder="exp: gugus" value="">
+            </div>
+            <div class="form-group">
+              <label for="">Password :</label>
+              <input type="password" required data-table="siswa/akun-siswa" name="password" class="form-control" placeholder="exp: ******************" value="">
+            </div>
+            <div class="form-group">
+              <button type="submit" action-script="
+                location.href = '#/siswa/login';
+              " data-simpan data-key="username"  get-data="siswa/akun-siswa" class="btn btn-success">Daftar</button>
+              <a href="#/guru/login" type="button" class="btn btn-default" name="button">Log In</a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+<section class="footer mt-5 text-dark">
+  <div class="container">
+    <div class="row">
+      &copy; Copyright by Gugus Darmayanto
+    </div>
+    <div class="col-sm-6">
+
+    </div>
+    <div class="col-sm-6">
+
+    </div>
+  </div>
+</section>
