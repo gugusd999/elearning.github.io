@@ -43,9 +43,14 @@
 				'page/siswa/kelasSiswa',
 				'page/siswa/kelasSiswaSoal',
 				'page/siswa/kelasSiswaSoalLatihan',
+				'page/guru/laporanHasilBelajar',
+				'page/guru/laporanNilaiSiswa',
+				'page/guru/laporanNilaiSiswaMapel',
+				'page/guru/laporanNilaiSiswaMapelSoal',
 				'action/click',
 				'action/firebaseAct'
-			], function(sammy, dashboard, dashboardsiswa, login, daftar, daftarsiswa, ruangguru, ruangkelas, kelas, soal, loginsiswa, pilihguru, kelasSiswa, kelasSiswaSoal, kelasSiswaSoalLatihan){
+			], function(sammy, dashboard, dashboardsiswa, login, daftar, daftarsiswa, ruangguru, ruangkelas, kelas, soal, loginsiswa, pilihguru, kelasSiswa, kelasSiswaSoal, kelasSiswaSoalLatihan, laporanHasilBelajar, laporanNilaiSiswa
+				, laporanNilaiSiswaMapel, laporanNilaiSiswaMapelSoal){
 					var app = sammy(function() {
 						// master data release
 						this.get('#/', function() {
@@ -96,6 +101,22 @@
 						});
 						this.get('#/ruangSiswa/', function() {
 							dashboardsiswa.view();
+						});
+						this.get('#/ruang-guru/laporan-siswa', function() {
+							laporanHasilBelajar.view();
+						});
+						this.get('#/hasil-belajar-soal/:data', function() {
+							let a = this.params['data'];
+							laporanNilaiSiswa.view(a);
+						});
+						this.get('#/hasil-belajar-soal-mapel/:data/:key', function() {
+							let a = this.params['data'];
+							let b = this.params['key'];
+							laporanNilaiSiswaMapel.view(a, b);
+						});
+						this.get('#/hasil-belajar-soal-mapel-data/:data', function() {
+							let a = this.params['data'];
+							laporanNilaiSiswaMapelSoal.view(a);
 						});
 					});
 					app.run("#/");

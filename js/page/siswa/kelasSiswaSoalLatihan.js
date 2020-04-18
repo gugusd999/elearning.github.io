@@ -32,7 +32,7 @@ define(['jquery', 'main', 'helper', 'frb', '@firebase/app','@firebase/auth', '@f
             let dataku = value.val();
 
             if (Array.isArray(dataku)) {
-            
+
               dataku.forEach((item) => {
               let {no} = item;
               eval(`obj.jawaban${no} = '';`);
@@ -236,13 +236,13 @@ define(['jquery', 'main', 'helper', 'frb', '@firebase/app','@firebase/auth', '@f
 
             }
 
-            
+
           })
         }else{
-            
+
           let jawaban = helper.decryptG(res.val());
 
-            console.log(jawaban);  
+            console.log(jawaban);
 
 
           let nilai = 0;
@@ -286,7 +286,7 @@ define(['jquery', 'main', 'helper', 'frb', '@firebase/app','@firebase/auth', '@f
 
 
             data.forEach((item, i) => {
-              
+
               if (i === 0) {
                 html += `
                   <div class="col-sm-12 mt-3">
@@ -296,7 +296,7 @@ define(['jquery', 'main', 'helper', 'frb', '@firebase/app','@firebase/auth', '@f
                       </div>
                     </div>
                   </div>
-                `; 
+                `;
               }
 
               console.log(item)
@@ -322,7 +322,7 @@ define(['jquery', 'main', 'helper', 'frb', '@firebase/app','@firebase/auth', '@f
               }else{
                 html +=  `
                   <div class="col-sm-12 mt-3">
-                    <div class="card">
+                    <div class="card"  style="background-color: rgba(240,228,210,1);">
                       <div class="card-body">
                         <p>
                           ${soal}
@@ -331,7 +331,7 @@ define(['jquery', 'main', 'helper', 'frb', '@firebase/app','@firebase/auth', '@f
                           Jawaban anda salah : ${eval(`jawaban.jawaban${no}`)}). ${eval(`${eval(`jawaban.jawaban${no}`)}`)}
                         </p>
                         <p>
-                          Jawaban yang benar : ${kunci}). ${eval(`${kunci}`)} 
+                          Jawaban yang benar : ${kunci}). ${eval(`${kunci}`)}
                         </p>
                         <p>
                           Keterangan : ${alasan}
@@ -386,7 +386,7 @@ define(['jquery', 'main', 'helper', 'frb', '@firebase/app','@firebase/auth', '@f
 
 
             data.forEach((item, i) => {
-              
+
               if (i === 0) {
                 html += `
                   <div class="col-sm-12 mt-3">
@@ -396,7 +396,7 @@ define(['jquery', 'main', 'helper', 'frb', '@firebase/app','@firebase/auth', '@f
                       </div>
                     </div>
                   </div>
-                `; 
+                `;
               }
 
               console.log(item)
@@ -422,7 +422,7 @@ define(['jquery', 'main', 'helper', 'frb', '@firebase/app','@firebase/auth', '@f
               }else{
                 html +=  `
                   <div class="col-sm-12 mt-3">
-                    <div class="card">
+                    <div class="card" style="background-color: rgba(240,228,210,1);">
                       <div class="card-body">
                         <p>
                           ${soal}
@@ -431,7 +431,7 @@ define(['jquery', 'main', 'helper', 'frb', '@firebase/app','@firebase/auth', '@f
                           Jawaban anda salah : ${eval(`jawaban.jawaban${no}`)}). ${eval(`${eval(`jawaban.jawaban${no}`)}`)}
                         </p>
                         <p>
-                          Jawaban yang benar : ${kunci}). ${eval(`${kunci}`)} 
+                          Jawaban yang benar : ${kunci}). ${eval(`${kunci}`)}
                         </p>
                         <p>
                           Keterangan : ${alasan}
@@ -453,12 +453,12 @@ define(['jquery', 'main', 'helper', 'frb', '@firebase/app','@firebase/auth', '@f
 
 
 
-            
+
 
 
           })
 
-          
+
           }
         })
 
