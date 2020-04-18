@@ -17,7 +17,7 @@ define(['jquery', 'helper', 'frb', '@firebase/app', '@firebase/database'], funct
               let {jenjang, kelas} = item;
               return  `
 
-              <a href="#/ruang-guru/kelas/${jenjang}-${kelas}" class="col-sm-6  mt-3">
+              <div class="col-sm-6  mt-3">
                 <div class="card">
                   <div class="card-body text-center" id="crud">
                     <div class="row">
@@ -27,11 +27,13 @@ define(['jquery', 'helper', 'frb', '@firebase/app', '@firebase/database'], funct
                       <div class="col-sm-8 text-left">
                         <span style="font-size: 20px; font-weight: 700; color: black;">${jenjang}/ ${kelas}</span>
                         <p class="text-dark">Yuk buat kelas untuk siswa</p>
+                        <a href="#/ruang-guru/kelas/${jenjang}-${kelas}" btn-action class="btn btn-success" >lihat</a>
+                        <button btn-action data="guru/kelas/${dataLogin.username}" child="${kelas}" hapus-data class="btn btn-danger" >hapus</button>
                       </div>
                     </div>
                   </div>
                 </div>
-              </a>
+              </div>
               `;
 
             }).forEach((item, i) => {
@@ -55,6 +57,8 @@ define(['jquery', 'helper', 'frb', '@firebase/app', '@firebase/database'], funct
                       <div class="col-sm-8 text-left">
                         <span style="font-size: 20px; font-weight: 700; color: black;">${jenjang}/ ${kelas}</span>
                         <p class="text-dark">Yuk buat kelas untuk siswa</p>
+                        <button lihat-data class="btn btn-success" >lihat</button>
+                        <button hapus-data class="btn btn-danger" >hapus</button>
                       </div>
                     </div>
                   </div>
@@ -65,7 +69,7 @@ define(['jquery', 'helper', 'frb', '@firebase/app', '@firebase/database'], funct
             }).forEach((item, i) => {
               html += item;
             });
-            $('body #syfaul-container').html(html);      
+            $('body #syfaul-container').html(html);
 
           }
 

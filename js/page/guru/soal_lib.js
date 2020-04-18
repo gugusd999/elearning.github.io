@@ -15,6 +15,8 @@ define(['jquery', 'helper', 'frb', '@firebase/app', '@firebase/database'], funct
 
           let dataku = value.val();
 
+          let soalS = soal;
+
         if (Array.isArray(dataku)) {
 
             dataku.map((item, i) => {
@@ -44,6 +46,9 @@ define(['jquery', 'helper', 'frb', '@firebase/app', '@firebase/database'], funct
                   <div>
                     <span>Alasan: </span>
                     <p>${alasan}</p>
+                  </div>
+                  <div class="card-footer">
+                    <button btn-action style="max-width:120px;" data="guru/soal/${kelas}/${soalS}/${dataLogin.username}/" child="${no}" hapus-data class="btn btn-danger" >hapus</button>
                   </div>
                 </div>
               </div>
@@ -88,6 +93,9 @@ define(['jquery', 'helper', 'frb', '@firebase/app', '@firebase/database'], funct
                     <span>Alasan: </span>
                     <p>${alasan}</p>
                   </div>
+                  <div class="card-footer">
+                    <button btn-action style="max-width:120px;" data="guru/soal/${kelas}/${soalS}/${dataLogin.username}/" child="${no}" hapus-data class="btn btn-danger" >hapus</button>
+                  </div>
                 </div>
               </div>
             </div>
@@ -100,7 +108,7 @@ define(['jquery', 'helper', 'frb', '@firebase/app', '@firebase/database'], funct
 
         }
 
-          
+
 
         }
       });

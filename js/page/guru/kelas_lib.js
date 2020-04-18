@@ -15,10 +15,10 @@ define(['jquery', 'helper', 'frb', '@firebase/app', '@firebase/database'], funct
           let html = ``;
           console.log(keys)
           keys.map((item, i) => {
-            let {judulSoal, kelas, keterangan} = eval(`dataGet.${item}`) ;
+            let {judulSoal, kelas, keterangan} = dataGet[item] ;
             return  `
 
-            <a href="#/ruang-guru/soal-latihan/${theKey}/${judulSoal.replace(/ /g, '_')}" class="col-sm-6  mt-3">
+            <div class="col-sm-6  mt-3">
               <div class="card">
                 <div class="card-body text-center" id="crud">
                   <div class="row">
@@ -28,11 +28,13 @@ define(['jquery', 'helper', 'frb', '@firebase/app', '@firebase/database'], funct
                     <div class="col-sm-8 text-left">
                       <span style="font-size: 20px; font-weight: 700; color: black;">${judulSoal}</span>
                       <p class="text-dark">Semangat Belajarnya</p>
+                      <a href="#/ruang-guru/soal-latihan/${theKey}/${judulSoal.replace(/ /g, '_')}" btn-action class="btn btn-success" >lihat</a>
+                      <button btn-action data="guru/latihan-soal/${dataLogin.username}/${theKey}" child="${item}" hapus-data class="btn btn-danger" >hapus</button>
                     </div>
                   </div>
                 </div>
               </div>
-            </a>
+            </div>
             `;
 
           }).forEach((item, i) => {

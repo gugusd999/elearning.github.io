@@ -115,6 +115,23 @@ function login(obj, key, tableName, auth, sebagai){
   })
 }
 
+async function hapus(a, b){
+  console.log(a);
+  console.log(b);
+  await firebase.database().ref(a).child(b).remove();
+  location.reload();
+}
+
+$('body').on(`click`, '[hapus-data]', function(event){
+  event.preventDefault();
+  var r = confirm("Kamu yakin ingin menghapus data ini!");
+  if (r == true) {
+    hapus($(this).attr('data'), $(this).attr('child'));
+  } else {
+
+  }
+})
+
 
 function create(obj, key, tableName, action, keyData){
   console.log(obj)
@@ -157,7 +174,7 @@ function create(obj, key, tableName, action, keyData){
 
 
 $("body").on('click', '[simpan-jawaban-soal]', function(event){
-  
+
   event.preventDefault();
   let data = helper.sesiGet('jawaban');
 
@@ -176,11 +193,11 @@ $("body").on('click', '[simpan-jawaban-soal]', function(event){
 
 
 $("body").on('change', '[data-jawaban]', function(event){
-  
+
   event.preventDefault();
-  
+
   let data = helper.decryptG(helper.sesiGet('jawaban'));
-  
+
   let value = $(this).val();
   let name = $(this).attr('name');
 
