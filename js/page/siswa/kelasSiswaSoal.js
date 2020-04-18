@@ -12,12 +12,16 @@ define(['jquery', 'main', 'helper', 'frb', '@firebase/app','@firebase/auth', '@f
 
         let data = value.val();
 
+        console.log(data);
+
+        console.log(data['MAT_5-A']);
+
         let keys = Object.keys(data);
 
         let html = ``;
 
         keys.forEach((item, i) => {
-          let guru = eval(`data.${item}`);
+          let guru = data[item];
           html +=  `
             <a href="#/siswa-kelas-latihan-soal/${guru.judulSoal.replace(/ /g, '_')}" class="col-sm-6  mt-3">
               <div class="card">
