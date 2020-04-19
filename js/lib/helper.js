@@ -15,6 +15,14 @@ define(['jquery', 'main', 'axios', 'aes', 'baseurl'], function($, main, axios, o
     return data;
   }
 
+  helper.loader = function(a){
+    if (a === 'show') {
+      $(`body .loader-wrapper`).css('display', 'flex');
+    }else if(a === 'toggle'){
+      $(`body .loader-wrapper`).css('display', 'none');
+    }
+  }
+
   helper.formatRupiah = function(angka, prefix){
     let numB = angka;
     let p = angka.toString().length;

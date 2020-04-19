@@ -1,6 +1,7 @@
 define(['jquery', 'main', 'helper', 'frb', '@firebase/app','@firebase/auth', '@firebase/database'], function($, main, helper, frb, firebase) {
   const dashboard = {}
     dashboard.view = async function(a, b) {
+      helper.loader('show')
       await helper.template('html/siswa/pilih-guru.html');
 
       $('body #text-content').text(`Data nilai siswa untuk soal ${b.replace(/\_/g, ' ')}`);
@@ -78,6 +79,7 @@ define(['jquery', 'main', 'helper', 'frb', '@firebase/app','@firebase/auth', '@f
           `;
 
           $('body #syfaul-container').html(html);
+          helper.loader('toggle')
 
         });
 

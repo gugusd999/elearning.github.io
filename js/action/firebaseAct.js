@@ -13,6 +13,32 @@ let formdata = [];
 
 let dataJawaban = {};
 
+
+function bacagambarnya(input){
+
+  let getTarget = input.getAttribute('target');
+
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function (e){
+            $(`body [input-preview-${getTarget}]`).val(e.target.result);
+            $(`body [img-preview-${getTarget}]`).attr('src', e.target.result);
+        }
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+
+
+
+$('body').on('change', '[gambar-upload]', function(event){
+  event.preventDefault();
+  bacagambarnya(this);
+});
+
+
+
+
 // parametr pertama judul
 // parametr kedua object
 function getData(a){
@@ -27,6 +53,9 @@ function getData(a){
 
 
 function formIsi(a, b){
+
+  console.log(b);
+
   let getData = formdata.filter((item) => {
     if (item.nama === a) {
       return item;
@@ -56,7 +85,9 @@ function formIsi(a, b){
     formdata.map((item, i) => {
       if (item.nama === a) {
         keys.forEach((res, i) => {
-            eval(`item.data.${res} = b.${res};`);
+          console.log(b[res]);
+          item['data'][res] = b[res];
+            // eval(`item.data.${res} = b.${res};`);
         });
 
       }
@@ -68,9 +99,7 @@ function formIsi(a, b){
 
 function makeObj(a, b){
   let data = {}
-
-  eval(`data.${a} = b;`);
-
+  data[a] = b;
   return data;
 
 }
@@ -79,6 +108,7 @@ firebase.initializeApp(frb.config);
 
 
 function login(obj, key, tableName, auth, sebagai){
+  helper.loader('show');
   obj.forEach((res) => {
     formIsi(
       res.getAttribute('data-table'),
@@ -106,9 +136,11 @@ function login(obj, key, tableName, auth, sebagai){
         if (sebagai === 'siswa') {
           helper.sesiNew('glearn-siswa', helper.encryptG(res.val()));
           location.href = '#/';
+          helper.loader('toggle');
         }else{
           helper.sesiNew('glearn-guru', helper.encryptG(res.val()));
           location.href = '#/';
+          helper.loader('toggle');
         }
       }
     }
@@ -134,7 +166,7 @@ $('body').on(`click`, '[hapus-data]', function(event){
 
 
 function create(obj, key, tableName, action, keyData){
-  console.log(obj)
+  helper.loader('show');
   obj.forEach((res) => {
     formIsi(
       res.getAttribute('data-table'),
@@ -165,8 +197,10 @@ function create(obj, key, tableName, action, keyData){
     if (res.val() === null) {
       firebase.database().ref(path).set(data).then(function(){
           eval(action);
+          helper.loader('toggle');
       });
     }else{
+      helper.loader('toggle');
       alert('maaf username sudah digunakan');
     }
   })
